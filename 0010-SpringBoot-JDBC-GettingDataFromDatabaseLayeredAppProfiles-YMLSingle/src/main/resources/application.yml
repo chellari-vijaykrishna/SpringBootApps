@@ -1,0 +1,91 @@
+#-Dspring.profiles.active=uat,prod in VM ARUGS
+
+# DEV Profile
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  application:
+    name: 02-SpringBoot-JDBC1
+  datasource:
+    url: jdbc:mysql://localhost:3306/empdb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: org.apache.commons.dbcp2.BasicDataSource
+server:
+  port: 8081
+
+# TEST Profile
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  application:
+    name: 02-SpringBoot-JDBC1
+  datasource:
+    url: jdbc:mysql://localhost:3306/empdb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: org.apache.tomcat.jdbc.pool.DataSource
+server:
+  port: 8081
+
+# UAT Profile
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+  application:
+    name: 02-SpringBoot-JDBC1
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+    password: vijay
+server:
+  port: 8081
+
+# PROD Profile
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  application:
+    name: 02-SpringBoot-JDBC1
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+    password: vijay
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+server:
+  port: 8081
+# Deafult Profile
+---
+#
+# Default Profile (Fallback Profile)
+spring:
+  profiles:
+    default: prod  # This will act as the default profile if no other profile is active
+  application:
+    name: 02-SpringBoot-JDBC1
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+    password: vijay
+server:
+  port: 8081
+---
+# Active Profile Configuration
+spring:
+  profiles:
+    include: uat
+    default: prod
+    active: prod

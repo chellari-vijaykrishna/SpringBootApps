@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: 005-SpringBoot-ValueAnnotations
+server:
+  port: 8081
+man:
+  person:
+    name: vijayy   
+    addrs: mlg
+    'no': 1
+    age: 24
+    hobbies: Cricket,Hocky,Skipping
+    phoneNumbers:
+    - 1124548845
+    - 542544851
+    - 895452145
+    - 895452145
+    - 895452145
+    documents:
+      aadhar: 1124548845
+      voter: ihoggrbgf
+    emp:
+      name: vijay
+      'no': 12
+person:
+  amount1: 240
+  amount2: 60
